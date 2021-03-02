@@ -23,6 +23,10 @@ module.exports = {
 		 */
 		if(args[0] === 'anime'){
 			const animeName = args.slice(1).join(' ');
+			if(!animeName) {
+				return message.channel.send(`⚠️ **No anime name is provided. Please provide a valid anime name** `);
+			}
+
 			const response = await getQuote(`/random/anime?title=${animeName}`);
 
 			if(!response) return message.channel.send(notFoundErrorResponse(animeName));
@@ -36,11 +40,17 @@ module.exports = {
 		 */
 		if(args[0] === 'char'){
 			const characterName = args.slice(1).join(' ');
+			if(!characterName) {
+				return message.channel.send(`⚠️ **No character name is provided. Please provide a valid anime name** `);
+			}
+
 			const response = await getQuote(`/random/character?name=${characterName}`, message);
 
 			if(!response) return message.channel.send(notFoundErrorResponse(characterName));
 
 			return message.channel.send(formatResponse(response));
 		}
+
+		return message.channel.reply(`⚠️ **That is not a valid command!** Run \`!help quote\` for avalilable quote commands`);
 	}
 };
