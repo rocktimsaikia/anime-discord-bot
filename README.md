@@ -1,6 +1,16 @@
 # Animechan Discord bot
 
-> A simple discord that brings you quotes from [Animecha API](https://animechan.vercel.app/).
+A simple discord bot that generates random anime quotes from various animes on command. All the quotes are generated with the official [Animechan API](https://animechan.vercel.app/).
+
+## Available commands
+
+- `!quote random` : Displays one random quote from any availabe anime
+- `!quote anime [anime name]` : Displays one random quote from the specified Anime. ex: `!quote anime naruto`
+- `!quote char [character name]` : Displays one random quote from the specified Anime Character. ex: `!quote char saitama`
+- `!help` : Lists all the availabe commads
+- `!help [command name]` : Displays information on the specified command name. ex: `!help quote`
+
+
 
 ## Getting started
 
