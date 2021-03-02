@@ -30,8 +30,14 @@ client.on('message', message => {
 
 	const command = client.commands.get(commandName);
 
-	if (!args.length) {
-		return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+	if (command.args && !args.length) {
+		let reply = `You didn't provide any arguments, ${message.author}!\n`;
+
+		if (command.usage) {
+			reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+		}
+			
+		return message.channel.send(reply);
 	}
 
 	// Spam restriction / cooldown time management (5s)

@@ -5,6 +5,7 @@ module.exports = {
 	name: 'quote',
 	description: 'Get a random quote or get a specific one by anime/character name.',
 	cooldown: 5,
+	args: true,
 	usage: commandInfo,
 	async execute(message, args) {
 		/**
