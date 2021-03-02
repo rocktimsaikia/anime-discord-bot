@@ -11,11 +11,12 @@
 git clone https://github.com/rocktimsaikia/anime-discord-bot.git
 
 # Enter into the directory
-cd discord-bot/
+cd anime-discord-bot/
 
 # Install the dependencies
-npm install
+npm install 
 ```
+[Yarn](https://yarnpkg.com/) is recommended for installation but npm is fine too.
 
 ### Configuration
 
@@ -24,7 +25,7 @@ After the installing go the `config.json` file in the root directory and add you
 ### Starting the application
 
 ```sh
-npm run dev
+npm start
 ```
 
 This will run the application in development mode.
