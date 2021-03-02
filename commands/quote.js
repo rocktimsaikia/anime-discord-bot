@@ -1,5 +1,5 @@
-const {getQuote} = require('../../util/fetch-quote');
-const {commandInfo, notFoundErrorResponse, formatResponse} = require('../../util');
+const {getQuote} = require('../util/fetch-quote');
+const {commandInfo, notFoundErrorResponse, formatResponse} = require('../util');
 
 module.exports = {
 	name: 'quote',

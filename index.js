@@ -9,13 +9,11 @@ const cooldowns = new Discord.Collection();
 
 client.commands = new Discord.Collection();
 
-const commandFolders = fs.readdirSync('./commands');
-commandFolders.forEach(folder => {
-	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
-	commandFiles.forEach(file => {
-		const command = require(`./commands/${folder}/${file}`);
-		client.commands.set(command.name, command);
-	});
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+commandFiles.forEach(file => {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
 });
 
 client.on('ready', () => console.info(`Logged in as ${client.user.tag} 🚀`));
@@ -33,11 +31,11 @@ client.on('message', message => {
 
 	const command = client.commands.get(commandName);
 
-	if (command.args && !args.length) {
+	if (!args.length) {
 		return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
 	}
 
-	// Spam restriction / cooldown time management
+	// Spam restriction / cooldown time management (5s)
 	if (!cooldowns.has(command.name)) {
 		cooldowns.set(command.name, new Discord.Collection());
 	}
