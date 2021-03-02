@@ -5,7 +5,7 @@ module.exports.formatResponse = ({ quote, character, anime }) => {
 	quote = quote.replace(/\\|\//g, '');
 	// inside a command, event listener, etc.
 	const quoteEmbed = new Discord.MessageEmbed()
-		.setColor('#0099ff')
+		.setColor('#73fa69')
 		.setDescription(`***${quote}***`)
 		.addFields(
 			{ name: '\u200B', value: '\u200B' },
