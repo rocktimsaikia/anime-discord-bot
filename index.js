@@ -1,7 +1,6 @@
 require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
-const fetch = require('isomorphic-unfetch');
 const {prefix, token} = require('./config.json');
 
 const client = new Discord.Client();
