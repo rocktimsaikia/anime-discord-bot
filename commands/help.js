@@ -1,4 +1,5 @@
 const { prefix } = require('../config.json');
+const { errorResponse } = require('../util');
 
 module.exports = {
 	name: 'help',
@@ -21,7 +22,7 @@ module.exports = {
 		const command = commands.get(name);
 
 		if (!command) {
-			return message.reply('⚠️ **That\'s not a valid command!**');
+			return message.reply(errorResponse('That\'s not a valid command!'));
 		}
 
 		data.push(`**Name:** ${command.name}`);

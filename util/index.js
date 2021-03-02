@@ -1,10 +1,28 @@
+const Discord = require('discord.js');
+
+
 module.exports.formatResponse = ({ quote, character, anime }) => {
 	quote = quote.replace(/\\|\//g, '');
-	return `\n\n\n> ***${quote}***\n\n - ✍️ ${character} (${anime})`;
+	// inside a command, event listener, etc.
+	const quoteEmbed = new Discord.MessageEmbed()
+		.setColor('#0099ff')
+		.setDescription(`***${quote}***`)
+		.addFields(
+			{ name: '\u200B', value: '\u200B' },
+			{ name: 'character', value: character, inline: true },
+			{ name: 'Anime', value: anime, inline: true },
+		)
+		.setTimestamp()
+		.setFooter('Animechan API', 'https://i.imgur.com/JHDHn3N.png');
+
+	return quoteEmbed;
 };
 
-module.exports.notFoundErrorResponse = string => {
-	return `⚠️ No quotes from _${string}_ is available now !\n\n`;
+module.exports.errorResponse = string => {
+	const errorEmbed = new Discord.MessageEmbed()
+		.setColor('#ff614d')
+		.setTitle(string);
+	return errorEmbed;
 };
 
 module.exports.commandInfo = ` [random | anime <anime name> |  char <character name>]\n

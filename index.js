@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
+const { errorResponse } = require('./util');
 
 const client = new Discord.Client();
 const cooldowns = new Discord.Collection();
@@ -37,7 +38,7 @@ client.on('message', message => {
 			reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
 		}
 
-		return message.channel.send(reply);
+		return message.reply(reply);
 	}
 
 	// Spam restriction / cooldown time management (5s)
@@ -54,7 +55,7 @@ client.on('message', message => {
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`⚠️** Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.**`);
+			return message.channel.send(errorResponse(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command`));
 		}
 	}
 	timestamps.set(message.author.id, now);
@@ -66,7 +67,7 @@ client.on('message', message => {
 	}
 	catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
+		message.reply(errorResponse('there was an error trying to execute that command!'));
 	}
 });
 
