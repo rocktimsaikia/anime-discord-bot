@@ -1,5 +1,5 @@
-const {getQuote} = require('../util/fetch-quote');
-const {commandInfo, notFoundErrorResponse, formatResponse} = require('../util');
+const { getQuote } = require('../util/fetch-quote');
+const { commandInfo, notFoundErrorResponse, formatResponse } = require('../util');
 
 module.exports = {
 	name: 'quote',
@@ -19,12 +19,12 @@ module.exports = {
 
 		/**
 		 * !quote anime <anime_title>
-		 * When the second argument is anime followed by the Anime title	 
+		 * When the second argument is anime followed by the Anime title
 		 */
-		if(args[0] === 'anime'){
+		if(args[0] === 'anime') {
 			const animeName = args.slice(1).join(' ');
 			if(!animeName) {
-				return message.channel.send(`⚠️ **No anime name is provided. Please provide a valid anime name** `);
+				return message.channel.send('⚠️ **No anime name is provided. Please provide a valid anime name** ');
 			}
 
 			const response = await getQuote(`/random/anime?title=${animeName}`);
@@ -38,10 +38,10 @@ module.exports = {
 		 * !quote char <character_name>
 		 *  When the second argument is char followed by the Character name
 		 */
-		if(args[0] === 'char'){
+		if(args[0] === 'char') {
 			const characterName = args.slice(1).join(' ');
 			if(!characterName) {
-				return message.channel.send(`⚠️ **No character name is provided. Please provide a valid anime name** `);
+				return message.channel.send('⚠️ **No character name is provided. Please provide a valid anime name** ');
 			}
 
 			const response = await getQuote(`/random/character?name=${characterName}`, message);
@@ -51,6 +51,6 @@ module.exports = {
 			return message.channel.send(formatResponse(response));
 		}
 
-		return message.channel.reply(`⚠️ **That is not a valid command!** Run \`!help quote\` for avalilable quote commands`);
-	}
+		return message.channel.reply('⚠️ **That is not a valid command!** Run `!help quote` for avalilable quote commands');
+	},
 };

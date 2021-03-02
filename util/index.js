@@ -1,4 +1,4 @@
-module.exports.formatResponse = ({quote, character, anime}) => {
+module.exports.formatResponse = ({ quote, character, anime }) => {
 	quote = quote.replace(/\\|\//g, '');
 	return `\n\n\n> ***${quote}***\n\n - ✍️ ${character} (${anime})`;
 };

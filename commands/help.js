@@ -1,4 +1,4 @@
-const {prefix} = require('../config.json');
+const { prefix } = require('../config.json');
 
 module.exports = {
 	name: 'help',
@@ -21,7 +21,7 @@ module.exports = {
 		const command = commands.get(name);
 
 		if (!command) {
-			return message.reply(`⚠️ **That's not a valid command!**`);
+			return message.reply('⚠️ **That\'s not a valid command!**');
 		}
 
 		data.push(`**Name:** ${command.name}`);
@@ -33,5 +33,5 @@ module.exports = {
 		data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
 		message.channel.send(data, { split: true });
-	}
+	},
 };
