@@ -1,6 +1,6 @@
 # Animechan Discord bot
 
-> A simple discord to that brings you quotes from Animecha API.
+> A simple discord that brings you quotes from [Animecha API](https://animechan.vercel.app/).
 
 ## Getting started
 
@@ -8,7 +8,7 @@
 
 ```sh
 # Clone the repository
-git clone https://github.com/TannerGabriel/discord-bot.git
+git clone https://github.com/rocktimsaikia/anime-discord-bot.git
 
 # Enter into the directory
 cd discord-bot/
